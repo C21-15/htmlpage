@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ukr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Schedule</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(9, 104, 116);
+            padding: 10px;
+        }
+
+        .form-container {
+            background-color: aliceblue;
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            width: 25%;
+        }
+
+        .schedule-container {
+            background-color: aliceblue;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            width: 50%;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 80%;
+            padding: 10px;
+            background-color: rgb(9, 104, 116);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="image">
+        <img src="D:\logo.png" alt="Logo">
+    </section>
+    <section class="schedule-container">
+        <b>Розклад на поточний тиждень для групи С-21</b>
+        <table>
+            <tr>
+                <th></th>
+                <th>Понеділок</th>
+                <th>Вівторок</th>
+                <th>Середа</th>
+                <th>Четвер</th>
+                <th>П'ятниця</th>
+                <th>Субота</th>
+            </tr>
+            <tr>
+                <td>8:30-10:05</td>
+                <td style="background-color: rgb(245, 225, 100);">ФВ</td>
+                <td style="background-color: rgb(245, 225, 100);">Іноземна мова</td>
+                <td style="background-color: rgb(245, 225, 100);">ЗВП</td>
+                <td style="background-color: rgb(245, 225, 100);">ФВ</td>
+                <td style="background-color: rgb(128, 243, 153);">ФВ</td>
+                <td>СР</td>
+            </tr>
+            <tr>
+                <td>10:25-12:00</td>
+                <td style="background-color: rgb(128, 243, 153);">ЗВП</td>
+                <td style="background-color: rgb(128, 226, 243);">Правознавство</td>
+                <td style="background-color: rgb(245, 225, 100);">ЗВП</td>
+                <td style="background-color: rgb(128, 243, 153);">Правознавство</td>
+                <td style="background-color: rgb(245, 225, 100);">ТІМ</td>
+                <td>СР</td>
+            </tr>
+            <tr>
+                <td>12:10-13:55</td>
+                <td style="background-color: rgb(245, 225, 100);">ТС</td>
+                <td style="background-color: rgb(245, 225, 100);">ТІК</td>
+                <td style="background-color: rgb(245, 136, 100);">Програмування</td>
+                <td style="background-color: rgb(245, 225, 100);">ТС</td>
+                <td style="background-color: rgb(245, 225, 100);">ТІМ</td>
+                <td>СР</td>
+            </tr>
+        
+            
+        </table>
+        <p>P.s.<span style="background-color:rgb(128, 243, 153)">Лекції</span>,
+         <span style="background-color:rgb(128, 226, 243)">Семінар</span>,
+         <span style="background-color:rgb(245, 136, 100)">Лабораторне заняття</span>,
+         <span style="background-color:rgb(245, 225, 100)">Практичне заняття</span></p>
+    </section>
+
+    <section class="form-container">
+        <form action="/submit" method="post" target="_blank" onsubmit="return validatePassword();">
+            <b>Форма для введення особистої інформації</b>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="surname">Прізвище:</label>
+            <input type="text" id="surname" name="surname" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="pass">Пароль:</label>
+            <input type="password" id="pass" name="pass" required>
+            <label for="passch">Перевірка паролю:</label>
+            <input type="password" id="passch" name="passch" required>
+            <div id="error-message" class="error-message" style="display: none;">Паролі не співпадають. Будь ласка, перевірте введені паролі.</div>
+            <input type="submit" value="Надіслати">
+        </form>
+    </section>
+    
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('pass').value;
+            const passwordVerification = document.getElementById('passch').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (password !== passwordVerification) {
+                errorMessage.style.display = 'block';
+                return false;
+            } else {
+                errorMessage.style.display = 'none';
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
